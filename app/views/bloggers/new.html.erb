@@ -1,0 +1,24 @@
+<h1>New Blogger</h1>
+
+<%= form_for @blogger do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :bio %>
+    <%= f.text_area :bio %>
+    <br>
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+    <br>
+    <%= f.submit %>
+
+<% end %>
+
+<div id="generated_errors">
+    <ul>
+        <% @blogger.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+        <% end %>
+    </ul>
+</div>
