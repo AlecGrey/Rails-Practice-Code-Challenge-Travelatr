@@ -6,11 +6,15 @@
 
 <p><%= @post.content %></p>
 
-<%= form_for @post do |f| %>
+<%= form_tag like_path, method: "patch" do %>
+    <%= submit_tag "Like" %>
+<% end %>
+
+<!-- <%= form_for @post do |f| %>
 
 <%= f.submit 'Like', :name => 'like' %>
 
-<% end %>
+<% end %> -->
 
 <br>
 

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-    before_action :find_post, only: [:show, :edit, :update]
+    before_action :find_post, only: [:show, :edit, :update, :like]
 
     def show
     end
@@ -23,16 +23,17 @@ class PostsController < ApplicationController
     end
 
     def update
-        # byebug
-        if params[:like]
-            @post.add_like
-            @post.save
-            redirect_to post_path(@post)
-        elsif @post.update(sanitized_params)
+        if @post.update(sanitized_params)
             redirect_to post_path(@post)
         else
             render new_post_path
         end
+    end
+
+    def like
+        @post.add_like
+        @post.save
+        redirect_to post_path(@post)
     end
 
     private
