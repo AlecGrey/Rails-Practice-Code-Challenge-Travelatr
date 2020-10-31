@@ -1,0 +1,27 @@
+<h1><%= @post.id ? "Editing #{@post.title}" : "New Post"%></h1>
+
+<%= form_for @post do |f| %>
+
+<%= f.label :blogger %>
+<%= f.collection_select :blogger_id, Blogger.all, :id, :name %>
+<br>
+<%= f.label :destination %>
+<%=  f.collection_select :destination_id, Destination.all, :id, :name %>
+<br>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<br>
+<%= f.label :content %>
+<%= f.text_area :content %>
+<br>
+<%= f.submit %>
+
+<% end %>
+
+<% if @post.errors %>
+    <ul>
+        <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+    </ul>
+<% end %>

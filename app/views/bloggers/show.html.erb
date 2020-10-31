@@ -2,16 +2,19 @@
 
 <h3>Total Likes: <%= @blogger.total_post_likes %></h3>
 
-<h3>Featured Post: <%= link_to @blogger.featured_post.title, post_path(@blogger.featured_post) %></h3>
+<% if @blogger.featured_post %>
+    <h3>Featured Post: <%= link_to @blogger.featured_post.title, post_path(@blogger.featured_post) %></h3>
+<% end %>
 
 <h3>Top 5 Destinations</h3>
 
-<ol>
-
-<% @blogger.top_5_destinations.each do |d| %>
-<li><%= link_to d.name, destination_path(d) %></li>
+<% if @blogger.destinations.size > 0 %>
+    <ol>
+    <% @blogger.top_5_destinations.each do |d| %>
+    <li><%= link_to d.name, destination_path(d) %></li>
+    <% end %>
+    </ol>
+<% else %>
+    <h5>No posts to show!</h5>
 <% end %>
-
-
-</ol>
 

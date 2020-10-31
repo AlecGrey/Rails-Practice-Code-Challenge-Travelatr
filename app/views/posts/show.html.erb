@@ -1,0 +1,17 @@
+<h1><%= @post.title %></h1>
+
+<h2>Written by: <%= link_to @post.blogger.name, blogger_path(@post.blogger) %></h2>
+
+<h2>Destination: <%= link_to @post.destination.name, destination_path(@post.destination) %></h2>
+
+<p><%= @post.content %></p>
+
+<%= form_for @post do |f| %>
+
+<%= f.submit 'Like', :name => 'like' %>
+
+<% end %>
+
+<br>
+
+<%= link_to "Edit Post", edit_post_path(@post) %>
